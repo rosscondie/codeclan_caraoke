@@ -27,7 +27,7 @@ class TestRoom(unittest.TestCase):
         self.room_1.add_song(song)
         expected = song
         actual = self.room_1.songs[0]
-        self.assertEquals(expected, actual)
+        self.assertEqual(expected, actual)
 
     def test_can_add_song_to_rock_room(self):
         song = Song("Sabbra Cadabra", "Metallica")
@@ -40,6 +40,13 @@ class TestRoom(unittest.TestCase):
     def test_room_1_has_capacity(self):
         expected = []
         actual = self.room_1.capacity
+        self.assertEqual(expected, actual)
+
+    def test_room_1_can_add_guest(self):
+        guest = Guest("Meatloaf")
+        self.room_1.add_guest(guest)
+        expected = guest
+        actual = self.room_1.capacity[0]
         self.assertEqual(expected, actual)
 
     
