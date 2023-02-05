@@ -9,9 +9,7 @@ class Room:
         self.songs.append(new_song)
 
     def add_guest(self, new_guest):
-        self.guests.append(new_guest)
+       self.guests.append(new_guest)
 
     def remove_guest(self, guest):
         self.guests.remove(guest)
-
-    
