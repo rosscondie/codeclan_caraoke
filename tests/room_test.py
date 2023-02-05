@@ -5,8 +5,8 @@ from classes.song import Song
 
 class TestRoom(unittest.TestCase):
     def setUp(self):
-        self.room_1 = Room("The Glitter Room")
-        self.room_2 = Room("The Rock Room")
+        self.room_1 = Room("The Glitter Room", 10)
+        self.room_2 = Room("The Rock Room", 5)
         self.guest_1 = Guest("Jimi Hendrix")
         self.guest_2 = Guest("Bruce Springsteen")
         self.song_1 = Song("Welcome to the Jungle", "Guns N' Roses")
@@ -38,16 +38,26 @@ class TestRoom(unittest.TestCase):
 
 
     def test_room_1_has_capacity(self):
-        expected = []
+        expected = 10
         actual = self.room_1.capacity
         self.assertEqual(expected, actual)
 
     def test_room_1_can_add_guest(self):
         guest = Guest("Meatloaf")
         self.room_1.add_guest(guest)
-        expected = guest
-        actual = self.room_1.capacity[0]
+        expected = 1
+        actual = len(self.room_1.guests)
         self.assertEqual(expected, actual)
+
+    def test_room_1_can_remove_guest(self):
+        guest = Guest("Meatloaf")
+        self.room_1.add_guest(guest)
+        self.room_1.remove_guest(guest)
+        expected = 0
+        actual = len(self.room_1.guests)
+        self.assertEqual(expected, actual)
+        
+        
 
     
 
